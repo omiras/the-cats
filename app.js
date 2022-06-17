@@ -25,6 +25,8 @@ const cats = [
 	}
 ];
 
+// const cats = [];
+
 const dogs = [
 
 	{

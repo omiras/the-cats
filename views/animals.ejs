@@ -14,17 +14,26 @@
     <header>
         <%- include('./partials/nav'); %>
     </header>
-    <h1>List of all the <%= animalType %>
-    </h1>
 
-    <section class="container">
-        <% animals.forEach(function(a) { %>
-            <p>
-                <%= a.name %>
-                    <img style="width:100px" src="<%= a.image %>" alt="">
-            </p>
-            <% }); %>
-    </section>
+    <!-- Renderizo este mensaje si hay gatos, pero si no hay, quiero renderizar un mensaje que diga 'There no animals at the moment'-->
+
+    <% if (animals.length!=0) { %>
+        <h1>List of all the <%= animalType %>
+        </h1>
+        <% } else { %>
+            <h1>There are no <%= animalType %> at the moment</h1>
+            <% } %>
+
+
+
+                <section class="container">
+                    <% animals.forEach(function(a) { %>
+                        <p>
+                            <%= a.name %>
+                                <img style="width:100px" src="<%= a.image %>" alt="">
+                        </p>
+                        <% }); %>
+                </section>
 
 </body>
 
