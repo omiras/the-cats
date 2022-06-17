@@ -123,7 +123,9 @@ app.get("/category/:type", (req, res) => {
 });
 
 function mostrarHomePage(req, res) {
-	res.render('index');
+	res.render('index', {
+		unavariable: "HOLI!!"
+	});
 }
 
 app.use((req, res) => {
