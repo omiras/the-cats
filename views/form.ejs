@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Quiero realizar un POST al endpoint /new-animal, que deberá estar definido en el app.js -->
+    <form method="post" action="/new-animal">
+
+        <!-- Grid -->
+        <div class="grid">
+
+            <!-- Markup example 1: input is inside label -->
+            <label for="breed">
+                Breed
+                <input type="text" id="breed" name="breed" placeholder="Breed" required>
+            </label>
+
+            <label for="urlImage">
+                URL image
+                <input type="url" id="urlImage" name="urlImage" placeholder="https://..." required>
+            </label>
+
+            <label for="Category">Category</label>
+            <select id="category" name="category" required>
+                <option value="cat" selected>Cat</option>
+                <option value="dog">Dog</option>
+            </select>
+
+        </div>
+
+        <!-- Button -->
+        <button type="submit">Submit</button>
+
+    </form>
+
+</body>
+
+</html>

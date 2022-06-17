@@ -59,10 +59,42 @@ const express = require('express');
 
 const app = express();
 
+// queremos que todos los ficheros de la carpeta 'public' sean accesibles por el cliente
+app.use(express.static('public'));
+
+// Me gustaría poder gestionar peticiones del tipo POST
+app.use(express.urlencoded({ extended: false }));
+
 app.set('view engine', 'ejs');
 // Definir rutas
 
 app.get("/", mostrarHomePage);
+
+app.get("/new-animal", (req, res) => {
+	res.render("form");
+});
+
+app.post("/new-animal", (req, res) => {
+	const { breed, urlImage, category } = req.body;
+
+	if (category == "cat") {
+		cats.push({
+			name: breed,
+			image: urlImage
+		})
+
+		res.redirect("/category/cats");
+	}
+
+	else {
+		dogs.push({
+			name: breed,
+			image: urlImage
+		})
+		res.redirect("/category/dogs");
+
+	}
+})
 
 app.get("/category/:type", (req, res) => {
 	// En el objeto 'params' tenemos todos los parámetros dinámicos que nos ha pasado el cliente
