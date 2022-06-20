@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <%- include('./partials/nav'); %>
+    </header>
+    <div class="container">
+        <h1>
+            <%= animal.name %>
+        </h1>
+        <img style="width: 100px;" src="<%= animal.image %>" alt="">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id sunt tempore fuga magnam. Blanditiis, aliquam
+            consectetur. Exercitationem assumenda quae enim nemo harum doloribus error commodi, ipsam labore iure
+            voluptate expedita.</p>
+    </div>
+</body>
+
+</html>

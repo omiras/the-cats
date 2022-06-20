@@ -28,10 +28,12 @@
 
                 <section class="container">
                     <% animals.forEach(function(a) { %>
-                        <p>
-                            <%= a.name %>
-                                <img style="width:100px" src="<%= a.image %>" alt="">
-                        </p>
+                        <a href="/animal/<%= animalType %>/<%= a.id %>">
+                            <p>
+                                <%= a.name %>
+                                    <img style="width:100px" src="<%= a.image %>" alt="">
+                            </p>
+                        </a>
                         <% }); %>
                 </section>
 

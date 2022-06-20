@@ -1,25 +1,30 @@
 const cats = [
 	{
+		"id": 1,
 		"name": "Persian cat",
 		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/cat/images/persian_cat.jpg"
 	},
 
 	{
+		"id": 2,
 		"name": "Russian Blue",
 		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/cat/images/russian_blue.jpg"
 	},
 
 	{
+		"id": 3,
 		"name": "Bengal cat",
 		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/cat/images/bengal_blue.jpeg"
 	},
 
 	{
+		"id": 4,
 		"name": "British Shorthair",
 		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/cat/images/british_shorthairs.jpeg"
 	},
 
 	{
+		"id": 5,
 		"name": "Maine Coon",
 		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/cat/images/maine_coon.jpg"
 	}
@@ -30,26 +35,25 @@ const cats = [
 const dogs = [
 
 	{
-		"name": "Labrador Retriever",
-		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/dog/images/labrador_retriver.jpeg"
-	},
-
-	{
+		id: 2,
 		"name": "Pug",
 		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/dog/images/pug.jpg"
 	},
 
 	{
+		id: 3,
 		"name": "Siberian Husky",
 		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/dog/images/siberian_husky.jpg"
 	},
 
 	{
+		id: 4,
 		"name": "Beagle",
 		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/dog/images/beagle.jpg"
 	},
 
 	{
+		id: 5,
 		"name": "Pomeranian",
 		"image": "https://raw.githubusercontent.com/haseebpvt/Animal-API/master/data/dog/images/pomeranian.jpeg"
 	},
@@ -71,6 +75,24 @@ app.set('view engine', 'ejs');
 // Definir rutas
 
 app.get("/", mostrarHomePage);
+
+app.get("/animal/:category/:id", (req, res) => {
+
+	const { category, id } = req.params;
+	let result;
+
+	if (category == "cats") {
+		result = cats.find(item => item.id == id)
+	} else if (category == "dogs") {
+		result = dogs.find(item => item.id == id)
+	} else {
+		return res.status(404).send("Categoría no encontrada");
+	}
+
+	res.render('animal-details', {
+		animal: result
+	});
+});
 
 app.get("/new-animal", (req, res) => {
 	res.render("form");
@@ -104,14 +126,14 @@ app.get("/category/:type", (req, res) => {
 
 	if (type == "cats") {
 		res.render("animals", {
-			animalType: 'GATOS',
+			animalType: 'cats',
 			animals: cats
 		});
 	}
 
 	else if (type == "dogs") {
 		res.render("animals", {
-			animalType: 'PERROS',
+			animalType: 'dogs',
 			animals: dogs
 		});
 	}
